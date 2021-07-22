@@ -20,7 +20,7 @@ ENV APP_HOME /app
 
 ENV PATH $APP_HOME/bin:$PATH
 
-EXPOSE 8081
+EXPOSE 8079
 
 RUN chmod 777 -R /app
 
