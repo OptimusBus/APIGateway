@@ -17,10 +17,12 @@ public class ApiGatewayApplication {
 	
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-		String vehicleEndpoint = "http://msvehicleservice-challenge1.router.default.svc.cluster.local";
-		String passengerEndpoint = "http://mspassengerservice-challenge1.router.default.svc.cluster.local";
-		System.out.println(vehicleEndpoint);
-		System.out.println(passengerEndpoint);
+		String vehicleEndpoint = "http://msvehicleservice.optimusbus.svc";
+		String passengerEndpoint = "http://mspassengerservice.optimusbus.svc";
+		String routeEndpoint = "http://msrouteservice.optimusbus.svc";
+		String roadnetworkEndpoint = "http://msroadnetworkservice.optimusbus.svc";
+		String securityEndpoint = "http://mssecurityservice.optimusbus.svc";
+		String bookingsEndpoint = "http://msbookingsservice.optimusbus.svc";
 		RouteLocator rl = builder.routes()
 			.route(p -> p
 				.path("/optimusbus/vehicles/**")
@@ -30,6 +32,22 @@ public class ApiGatewayApplication {
 				.path("/optimusbus/passengers/**")
 				.filters(f -> f.rewritePath("/optimusbus/","/MSPassenger/Passenger-1.0/"))
 				.uri(passengerEndpoint))
+			.route(p -> p
+				.path("/optimusbus/route/**")
+				.filters(f -> f.rewritePath("/optimusbus/","/MSRoute/Route-1.0/"))
+				.uri(routeEndpoint))
+			.route(p -> p
+				.path("/optimusbus/roadnetwork/**")
+				.filters(f -> f.rewritePath("/optimusbus/","/MSRoadNetwork/RoadNetwork-1.0/"))
+				.uri(roadnetworkEndpoint))
+			.route(p -> p
+				.path("/optimusbus/security/**")
+				.filters(f -> f.rewritePath("/optimusbus/","/MSSecurity/Security-1.0/"))
+				.uri(securityEndpoint))
+			.route(p -> p
+				.path("/optimusbus/bookings/**")
+				.filters(f -> f.rewritePath("/optimusbus/","/MSBookings/Bookings-1.0/"))
+				.uri(bookingsEndpoint))
 			.build();
 		return rl;
 	}
