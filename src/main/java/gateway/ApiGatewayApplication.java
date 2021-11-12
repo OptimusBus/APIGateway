@@ -17,12 +17,12 @@ public class ApiGatewayApplication {
 	
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-		String vehicleEndpoint = "http://msvehicleservice.optimusbus.svc";
-		String passengerEndpoint = "http://mspassengerservice.optimusbus.svc";
-		String routeEndpoint = "http://msrouteservice.optimusbus.svc";
-		String roadnetworkEndpoint = "http://msroadnetworkservice.optimusbus.svc";
-		String securityEndpoint = "http://mssecurityservice.optimusbus.svc";
-		String bookingsEndpoint = "http://msbookingsservice.optimusbus.svc";
+		String vehicleEndpoint = "http://vehicle-optimusbus.router.default.svc.cluster.local/";
+		String passengerEndpoint = "http://passenger-optimusbus.router.default.svc.cluster.local/";
+		String routeEndpoint = "http://route-optimusbus.router.default.svc.cluster.local/";
+		String roadnetworkEndpoint = "http://roadnetwork-optimusbus.router.default.svc.cluster.local/";
+		String securityEndpoint = "http://security-optimusbus.router.default.svc.cluster.local/";
+		String bookingsEndpoint = "http://bookings-optimusbus.router.default.svc.cluster.local/";
 		RouteLocator rl = builder.routes()
 			.route(p -> p
 				.path("/optimusbus/vehicles/**")
