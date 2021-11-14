@@ -58,7 +58,7 @@ public class ApiGatewayApplication {
 				.uri(bookingsEndpoint))
 			.route(p -> p
 				.path("/optimusbus/VehicleClient/**")
-				.filters(f -> f.rewritePath("/optimusbus/",""))
+				.filters(f -> f.rewritePath("/optimusbus/VehicleClient","/VehicleClient/"))
 				.uri(clientEndpoint))
 			.build();
 		return rl;
